@@ -1,0 +1,88 @@
+The dataset I used for this project is the World Happiness Report. The data is
+collected by Gallup World Poll, a global survey which spans 140+ countries
+which they claim to cover 95% of global adults, the survey is conducted via
+face-to-face interviews or telephone. more than 100,000 people are surveyed
+each year, but only about 1000 people per country each year. The timing, 
+techniques, and sampling locations are carried out to account for error. e.g.
+Gallup accounts for seasonal changes, war, and other factors which might
+contribute to random error. The "Life evaluation (3-year average)" column in 
+particular is measured in a universal fashion. Not every country has a scale 
+from 1 to 10 funnily enough. In the dataset, the 6 factors and "Dystopia + 
+Residual" columns were added starting in 2019 after they concluded they
+somewhat correlate with happiness rather than causing it. Unemployment and
+equality are not accounted for because they aren't available yet for the full
+sample of countries and they ostensibly have a weaker correlation with
+happiness then the other measures. All these methods, using three-year 
+averages, accounting for cultural and regional differences all sound accurate.
+
+But there are several limitations which may make WHR unrepresentative of 
+happiness across the world however. As of 2026, there are a total of 195 
+recognised countries in the world. And the WHR has only included 147 of those 
+countries in the latest findings (in 2025). They mention that they don't 
+survey small or inaccessible populations due to it being cost-ineffective to 
+travel to. This could bring up many questions. Like, at what point would the
+state be accessible, and hence cost-effective to travel to? What is the 
+minimum population they are willing to assess? Depending on their answers,
+specific states will be completely unaccounted for which skews the rankings 
+with states with higher populations. Another possible limitation of the WHR
+would be subjectivity within the measurements themselves. Although the method
+they use to gather results for "Life evaluation (3-year average)" is 
+universal, countries will still see them completely different. Like in western
+culture, a 10/10 is seen as perfection so it is rarely given out. 8-9 is
+considered high praise. But in eastern culture, they may prioritise collective
+thinking rather than indivualism. Because of this, ratings may converge to 
+8-9, or skew downwards, or any combination of data. Even if these limitations
+are unaccounted for, the WHR still seems like accurate representation of
+worldwide happiness, as each country has some context for their individual
+rank, like Finland being ~0.2 above 2nd place almost every year, they seem to
+be doing the right things.
+
+There were a few assumptions that I have made about the dataset.
+• the "Life evaluation (3-year average)" column is representative of 
+  happiness - the happiness ranking is based on life evaluation, a question
+  derived from the Cantril ladder.
+• 5 entries across a span of 5 years is enough to filter out anomalous 
+  observations - after seeing a few outliers with only 2 to 4 entries, 
+  I decided to remove them as they would not be ranked fairly due to the
+  other countries having at least 20+ entries. 
+
+
+During the cleaning process, I didn't really manipulate the data much.
+I did remove the upper and lower bound of life_eval as I felt that the margin
+of error wasn't needed in this analysis due to the focus on correlations.
+Other than that, removing empty columns and renaming them for readability made 
+it easier for me to analyse. 
+
+I aimed to answer these three questions during my analysis:
+
+Q1: Does money (GDP) correlate with happiness? With high-income countries, is
+    the relationship linear or diminishing?
+Q2: Does generosity correlate with happiness? Does it remain significant when
+    accounting for other social, economic factors?
+Q3: What common characteristics define countries that consistently improve in 
+    happiness rankings over time, and what factors might explain these 
+    trends?
+
+
+The results prove to be interesting. Log(GDP) had a moderate postive 
+correlation with happiness (0.682). As expected, having more money is
+correlated to having more happiness, although, log(GDP) is used so we can't
+conclude that the relationship is diminishing. Generosity has no correlation
+with happiness, removing generosity resulted in a small decrease in model
+performance by -0.019, and generosity yielded the lowest coefficient when
+standardising for all features, which all surprisingly enough, point to
+generosity being insignficant in context to happiness. social support (having
+someone to talk to) seems to be correlated with top improvers in happiness,
+freedom to make life choices sees small increases in improvers, and the other
+factors seem to be uncorrelated. Notably, GDP isn't a key characteristic in
+improvers. So, the only telling characteristic when it comes to improvers is
+having someone to talk to during rough times. Who knew human connection is
+what we needed!
+
+Overall, this analysis has been very interesting. We will never be able to
+quantify human emotion in data and statistics but discovering that
+social support being correlated with happier countries, but specifically
+generosity being uncorrelated was very surprising. Working through this 
+dataset has given me a wider perspective when looking at happiness in 
+different countries, and hence different perspectives. Looking at the stories
+behind the decliners was insightful and I am eager for the WHR 2026 data!

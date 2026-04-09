@@ -1,0 +1,16 @@
+To run the project:
+
+1. install requirements: pip install -r requirements.txt
+
+2. run clean.ipynb
+
+3. run analysis.ipynb
+
+versions:
+
+pandas==2.2.2
+numpy==1.26.4
+matplotlib==3.8.4
+seaborn==0.13.2
+scikit-learn==1.4.2
+jupyter==1.0.0
